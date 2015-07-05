@@ -1,9 +1,9 @@
 " File:        todo.txt.vim
 " Description: Todo.txt filetype detection
-" Author:      Leandro Freitas <freitass@gmail.com>, David Beniamine <David@Beniamine.net>
+" Author:      David Beniamine <David@Beniamine.net>, Leandro Freitas <freitass@gmail.com>
 " License:     Vim license
 " Website:     http://github.com/dbeniamine/todo.txt-vim
-" Version:     0.6
+" Version:     0.7
 
 " Save context {{{1
 let s:save_cpo = &cpo
@@ -39,7 +39,6 @@ function! TodoTxtUnMarkAsDone()
 endfunction
 
 function! TodoTxtMarkAsDone()
-    "       call s:TodoTxtRemovePriority()
     call TodoTxtPrependDate()
     normal! Ix 
 endfunction
@@ -80,9 +79,29 @@ endfunction
 function! TodoTxtSort()
     " vim :sort is usually stable
     " we sort first on contexts, then on projects and then on priority
-    :sort /@[a-zA-Z]*/ r
-    :sort /+[a-zA-Z]*/ r
-    :sort /\v\([A-Z]\)/ r
+    sort /@[a-zA-Z]*/ r
+    ssort /+[a-zA-Z]*/ r
+    sort /\v\([A-Z]\)/ r
+endfunction
+
+function! TodoTxtSortDue()
+    silent! %s/\([dD][uU][eE]:\d\{4}\)-\(\d\{2}\)-\(\d\{2}\)/\1\2\3/g
+    " Sort adding entries with due dates add the beginning
+    sort n /[dD][uU][eE]:/
+    " Count the number of lines
+    silent normal gg
+    execute "/[dD][uU][eE]:"
+    let l:first=getpos(".")[1]
+    silent normal N
+    let l:last=getpos(".")[1]
+    let l:diff=l:last-l:first+1
+    " Put the sorted lines at the beginning of the file
+    execute ':'.l:first
+    execute ':d'.l:diff
+    silent normal gg
+    silent normal P
+    silent! %s/\([dD][uU][eE]:\d\{4}\)\(\d\{2}\)/\1-\2-/g
+    " TODO: add time sorting (YYYY-MM-DD HH:MM)
 endfunction
 
 " Mappings {{{1
@@ -182,6 +201,14 @@ if !hasmapto("date<Tab>",'i')
     inoremap <script> <silent> <buffer> date<Tab> <C-R>=strftime("%Y-%m-%d")<CR>
 endif
 
+if !hasmapto("due:",'i')
+    inoremap <script> <silent> <buffer> due: due:<C-R>=strftime("%Y-%m-%d")<CR>
+endif
+
+if !hasmapto("DUE:",'i')
+    inoremap <script> <silent> <buffer> DUE: DUE:<C-R>=strftime("%Y-%m-%d")<CR>
+endif
+
 if !hasmapto("<localleader>d",'n')
     nnoremap <script> <silent> <buffer> <localleader>d :call TodoTxtPrependDate()<CR>
 endif
@@ -207,6 +234,11 @@ endif
 " Remove completed {{{2
 if !hasmapto("<localleader>D",'n')
     nnoremap <script> <silent> <buffer> <localleader>D :call TodoTxtRemoveCompleted()<CR>
+endif
+
+" Sort by due: date {{{2
+if !hasmapto("<localleader>sd".'n')
+    nnoremap <script> <silent> <buffer> <localleader>sd :call TodoTxtSortDue()<CR>
 endif
 
 " Folding {{{1

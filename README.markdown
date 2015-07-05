@@ -4,8 +4,8 @@
 
 This plugin is a fork of [freitass
 todo.txt](https://github.com/freitass/todo.txt-vim). It add severals functionalities including a [hierarchical sort](#sort), a
-[complete](#complete) function, some stuff to handle [due dates](#due_dates)
-and others stuff see [new features](#new_features).
+[complete](#completion) function, some stuff to handle [due dates](#due-dates)
+and others stuff see [new features](#new-features).
 
 Freitass announced on october 30th 2014 that he is not going to merge his version.
 
@@ -95,7 +95,7 @@ adding the next lines to your vimrc:
 
 The TodoComplete function is designed to complete projects (starting by '+')
 and context (starting by '@'). If you use it on a regular word, it will do a
-normal buffer completion.
+normal keyword completion (on all buffers).
 If you try to complete a project, it will propose all projects in all open
 buffers and for each of them, it will show their context and the name of the
 buffers in which they appears in the preview window.
@@ -125,3 +125,6 @@ sorted by at the beginning of the file, the rest of the file is not modified.
 `<LocalLeader>x` is a toggle which allow you to unmark a task as done.
 
 Syntax highlighting for couples key:value
+
+If the current buffer is a done.txt file, the basic sort sorts on completion
+date.

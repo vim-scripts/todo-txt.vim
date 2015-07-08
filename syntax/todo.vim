@@ -3,7 +3,7 @@
 " Author:      David Beniamine <David@Beniamine.net>,Leandro Freitas <freitass@gmail.com>
 " License:     Vim license
 " Website:     http://github.com/dbeniamine/todo.txt-vim
-" Version:     0.7
+" Version:     0.7.2
 
 if exists("b:current_syntax")
     finish
@@ -37,7 +37,7 @@ syntax  match  TodoPriorityX  '^([xX])\s.\+$'             contains=TodoKey,TodoD
 syntax  match  TodoPriorityY  '^([yY])\s.\+$'             contains=TodoKey,TodoDate,TodoProject,TodoContext
 syntax  match  TodoPriorityZ  '^([zZ])\s.\+$'             contains=TodoKey,TodoDate,TodoProject,TodoContext
 syntax  match  TodoDate       '\d\{2,4\}-\d\{2\}-\d\{2\}' contains=NONE
-syntax  match  TodoKey        '\S*:\S*'                   contains=TodoDate
+syntax  match  TodoKey        '\S*\S:\S\S*'                   contains=TodoDate
 syntax  match  TodoProject    '\(^\|\W\)+[^[:blank:]]\+'  contains=NONE
 syntax  match  TodoContext    '\(^\|\W\)@[^[:blank:]]\+'  contains=NONE
 

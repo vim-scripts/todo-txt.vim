@@ -84,7 +84,7 @@ function! todo#MarkAsDone(status)
 endfunction
 
 function! todo#MarkAllAsDone()
-    :g!/^x /:call todo#MarkAsDone()
+    :g!/^x /:call todo#MarkAsDone('')
 endfunction
 
 function! s:AppendToFile(file, lines)

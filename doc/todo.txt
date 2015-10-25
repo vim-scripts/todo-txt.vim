@@ -191,6 +191,12 @@ For more information on the available flags see |:sort|
 ===============================================================================
 6. Mappings                                                *TodoTxt-Mappings* ~
 
+By default todo-txt.vim set all the mappings secribed in this section. To
+prevent this behavior, add the following line to your vimrc
+>
+   let g:Todo_txt_do_not_map=1
+<
+
 6.1 Sort                                                         *TodoTxt-Sort*
 
     `<LocalLeader>s` : Sort the file by priority

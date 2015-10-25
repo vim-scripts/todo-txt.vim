@@ -15,7 +15,7 @@
 1. [Release notes](#release-notes)
 2. [Introduction](#introduction)
     1. [Todo.txt rules](#todo.txt-rules)
-    2. [Why this Fork ?](#Why-this-fork-?)
+    2. [Why this Fork ?](#Why-this-fork)
     3. [Installation](#installation)
 3. [TodoTxt Files](#todotxt-files)
 4. [Completion](#completion)
@@ -181,6 +181,13 @@ Defaults values are:
 For more information on the available flags see `help :sort`
 
 ## Mappings
+
+By default todo-txt.vim set all the mappings secribed in this section. To
+prevent this behavior, add the following line to your vimrc
+
+   let g:Todo_txt_do_not_map=1
+
+
 
 `<LocalLeader>` is \  by default, so ̀`<LocaLeader>-s` means you type \s
 

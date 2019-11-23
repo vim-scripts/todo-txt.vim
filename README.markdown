@@ -62,7 +62,7 @@ This plugin is a fork of [freitass
 todo.txt-vim](https://github.com/freitass/todo.txt-vim). It add severals cool
 functionalities including:
 
-+ [Hierarchical sort](##hierarchical-sort)
++ [Hierarchical sort](#hierarchical-sort)
 + [A completion function](#completion)
 + [A proper handling of due dates](#dates)
 + [A Flexible file naming](#todotxt-files).

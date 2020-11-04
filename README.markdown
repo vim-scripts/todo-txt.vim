@@ -105,7 +105,7 @@ This plugin provides a Flexible file naming for todo.txt, all the following
 names are recognized as todo:
 
     YYYY-MM-[Tt]odo.txt
-    YYYY-MM-DD[Tt]odo.txt
+    YYYY-MM-DD-[Tt]odo.txt
     [Tt]odo-YYYY-MM.txt
     [Tt]odo-YYYY-MM-DD.txt
     [Tt]odo.txt
@@ -114,7 +114,7 @@ names are recognized as todo:
 And obviously the same are recognize as done:
 
     YYYY-MM-[Dd]one.txt
-    YYYY-MM-DD[Dd]one.txt
+    YYYY-MM-DD-[Dd]one.txt
     [Dd]one-YYYY-MM.txt
     [Dd]one-YYYY-MM-DD.txt
     [Dd]one.txt
